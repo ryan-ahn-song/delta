@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stack-delta-ai"
+version = "0.1.0"
+description = "Declaration-behavior mismatch detector for npm install scripts"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{name = "STACK-Delta Research Team"}]
+license = {text = "MIT"}
+dependencies = []
+
+[project.scripts]
+stack-delta = "stack_delta.cli:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["stack_delta*"]
+
+[tool.setuptools.package-data]
+stack_delta = ["web/*", "config/*.json"]
+

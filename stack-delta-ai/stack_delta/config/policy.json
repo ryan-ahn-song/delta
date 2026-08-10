@@ -1,0 +1,72 @@
+{
+  "version": "1.0",
+  "threshold": 6.0,
+  "auto_approvable_capabilities": [
+    "file_read",
+    "file_write",
+    "network_connect",
+    "process_spawn"
+  ],
+  "category_expectations": {
+    "pure_javascript": [],
+    "native_addon": [
+      {"capability": "process_spawn", "target": "*/node-gyp", "purpose": "native module build"},
+      {"capability": "process_spawn", "target": "*/gcc", "purpose": "native module compilation"},
+      {"capability": "process_spawn", "target": "*/g++", "purpose": "native module compilation"},
+      {"capability": "process_spawn", "target": "*/make", "purpose": "native module build"},
+      {"capability": "file_write", "target": "/work/package/build/*", "purpose": "native build output"},
+      {"capability": "file_write", "target": "/tmp/*", "purpose": "temporary build output"}
+    ],
+    "binary_downloader": [
+      {"capability": "file_write", "target": "/work/package/bin/*", "purpose": "package-local binary"},
+      {"capability": "file_write", "target": "/work/package/vendor/*", "purpose": "package-local binary"}
+    ],
+    "cli_tool": [
+      {"capability": "file_write", "target": "/home/sandbox/.cache/*", "purpose": "CLI cache"},
+      {"capability": "file_write", "target": "/home/sandbox/.config/*", "purpose": "CLI configuration"}
+    ],
+    "code_generator": [
+      {"capability": "file_write", "target": "/work/package/generated/*", "purpose": "declared generated output"}
+    ],
+    "telemetry": [],
+    "config_manager": [
+      {"capability": "file_write", "target": "/work/package/.stack-delta-demo/*", "purpose": "package-local configuration"}
+    ]
+  },
+  "weights": {
+    "file_read": 2,
+    "file_write": 2,
+    "network_connect": 3,
+    "process_spawn": 2,
+    "env_read": 2,
+    "process_inspect": 4,
+    "persistence": 5,
+    "download_execute": 5
+  },
+  "sensitive_targets": [
+    {"capability": "file_read", "pattern": "*/.ssh/*", "weight": 5, "label": "SSH credential access"},
+    {"capability": "file_read", "pattern": "*/.aws/*", "weight": 5, "label": "cloud credential access"},
+    {"capability": "file_read", "pattern": "*/.kube/*", "weight": 5, "label": "cluster credential access"},
+    {"capability": "file_read", "pattern": "*/.npmrc", "weight": 5, "label": "npm credential access"},
+    {"capability": "file_write", "pattern": "*/.bashrc", "weight": 5, "label": "shell startup modification", "promote": "persistence"},
+    {"capability": "file_write", "pattern": "*/.profile", "weight": 5, "label": "shell startup modification", "promote": "persistence"},
+    {"capability": "env_read", "pattern": "*TOKEN*", "weight": 5, "label": "secret-like environment variable"},
+    {"capability": "env_read", "pattern": "*SECRET*", "weight": 5, "label": "secret-like environment variable"},
+    {"capability": "env_read", "pattern": "*PASSWORD*", "weight": 5, "label": "secret-like environment variable"},
+    {"capability": "process_inspect", "pattern": "/proc/*", "weight": 4, "label": "process information access"}
+  ],
+  "never_auto_approve": [
+    {"capability": "file_read", "pattern": "*/.ssh/*"},
+    {"capability": "file_read", "pattern": "*/.aws/*"},
+    {"capability": "file_read", "pattern": "*/.kube/*"},
+    {"capability": "file_read", "pattern": "*/.npmrc"},
+    {"capability": "env_read", "pattern": "*"},
+    {"capability": "process_inspect", "pattern": "*"},
+    {"capability": "persistence", "pattern": "*"},
+    {"capability": "download_execute", "pattern": "*"}
+  ],
+  "chain_bonuses": [
+    {"requires": ["secret_access", "network_connect"], "bonus": 3, "label": "secret access followed by external connection"},
+    {"requires": ["download", "process_spawn"], "bonus": 3, "label": "download followed by execution"}
+  ]
+}

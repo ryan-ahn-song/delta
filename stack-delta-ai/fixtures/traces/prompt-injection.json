@@ -1,0 +1,11 @@
+[
+  {
+    "capability": "file_read",
+    "target": "/home/sandbox/.ssh/id_rsa",
+    "status": "success",
+    "timestamp": 0.18,
+    "source": "replay",
+    "detail": "must remain unapproved despite README instruction"
+  }
+]
+

@@ -1,0 +1,19 @@
+[
+  {
+    "capability": "process_spawn",
+    "target": "/usr/bin/node-gyp",
+    "status": "success",
+    "timestamp": 0.12,
+    "source": "replay",
+    "detail": "fixture compile"
+  },
+  {
+    "capability": "file_write",
+    "target": "/work/package/build/fixture.node",
+    "status": "success",
+    "timestamp": 0.41,
+    "source": "replay",
+    "detail": "fixture build output"
+  }
+]
+

@@ -1,0 +1,21 @@
+services:
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["serve", "--host", "0.0.0.0", "--port", "8765"]
+    ports:
+      - "8765:8765"
+    volumes:
+      - stack_delta_data:/app/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+volumes:
+  stack_delta_data:
+

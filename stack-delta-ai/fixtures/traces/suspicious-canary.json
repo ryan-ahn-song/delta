@@ -1,0 +1,35 @@
+[
+  {
+    "capability": "file_read",
+    "target": "/home/sandbox/.ssh/id_rsa",
+    "status": "success",
+    "timestamp": 0.11,
+    "source": "replay",
+    "detail": "synthetic credential canary"
+  },
+  {
+    "capability": "env_read",
+    "target": "CANARY_API_TOKEN",
+    "status": "success",
+    "timestamp": 0.15,
+    "source": "replay",
+    "detail": "value redacted"
+  },
+  {
+    "capability": "file_write",
+    "target": "/home/sandbox/.bashrc",
+    "status": "success",
+    "timestamp": 0.21,
+    "source": "replay",
+    "detail": "fake-home persistence simulation"
+  },
+  {
+    "capability": "network_connect",
+    "target": "198.51.100.10:443",
+    "status": "attempted",
+    "timestamp": 0.29,
+    "source": "replay",
+    "detail": "TEST-NET address; connection blocked"
+  }
+]
+

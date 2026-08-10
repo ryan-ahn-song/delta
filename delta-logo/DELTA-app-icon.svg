@@ -1,0 +1,36 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>DELTA Security IDE app icon</title>
+  <desc>A split delta mark representing the gap between declared and observed software behavior.</desc>
+
+  <rect width="1024" height="1024" rx="228" fill="#0F1116"/>
+
+  <path
+    d="M232 778L512 218"
+    stroke="#27D3B2"
+    stroke-width="104"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M512 218L792 778"
+    stroke="#8B7CFF"
+    stroke-width="104"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M338 674H486"
+    stroke="#6FA8FF"
+    stroke-width="84"
+    stroke-linecap="round"
+  />
+  <path
+    d="M538 650H686"
+    stroke="#B29AFF"
+    stroke-width="84"
+    stroke-linecap="round"
+  />
+
+  <circle cx="512" cy="662" r="16" fill="#FF6B72"/>
+</svg>

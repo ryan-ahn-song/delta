@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="STACK-Delta AI npm declaration-behavior mismatch dashboard">
+  <title>STACK-Δ AI · Behavior Integrity Lab</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="STACK-Delta home">
+      <span class="brand-mark">Δ</span>
+      <span><strong>STACK-Δ</strong><small>BEHAVIOR INTEGRITY LAB</small></span>
+    </a>
+    <div class="system-state">
+      <span id="health-dot" class="status-dot waiting"></span>
+      <span id="health-text">센서 상태 확인 중</span>
+      <span class="version">RESEARCH BUILD 0.1</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">DOCUMENT CLAIMS × RUNTIME CAPABILITIES</p>
+        <h1>패키지가 <em>말한 것</em>과<br>실제로 <em>한 것</em>의 차이.</h1>
+      </div>
+      <div class="formula-card" aria-label="STACK-Delta formula">
+        <span>EXPECTED</span>
+        <b>E</b>
+        <i>vs</i>
+        <b>O(T)</b>
+        <span>OBSERVED</span>
+        <div>Δ(T) = O(T) − E</div>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <aside class="control-panel">
+        <div class="panel-heading">
+          <span class="step">01</span>
+          <div><strong>안전한 시나리오</strong><small>격리 실험 재생</small></div>
+        </div>
+        <div class="scenario-list">
+          <button class="scenario" data-scenario="benign">
+            <span class="scenario-icon safe">✓</span>
+            <span><b>정상 네이티브 빌드</b><small>설명 가능한 컴파일 행위</small></span>
+          </button>
+          <button class="scenario active" data-scenario="suspicious">
+            <span class="scenario-icon danger">!</span>
+            <span><b>카나리 접근 공격</b><small>가짜 인증정보·외부 연결</small></span>
+          </button>
+          <button class="scenario" data-scenario="prompt_injection">
+            <span class="scenario-icon warn">↯</span>
+            <span><b>README 인젝션</b><small>기대 권한 조작 시도</small></span>
+          </button>
+        </div>
+        <button id="run-button" class="run-button"><span>분석 실행</span><kbd>SAFE REPLAY</kbd></button>
+
+        <div class="divider"></div>
+        <div class="panel-heading compact">
+          <span class="step">02</span>
+          <div><strong>최근 분석</strong><small id="history-count">0 records</small></div>
+        </div>
+        <div id="history" class="history" aria-live="polite"></div>
+      </aside>
+
+      <section class="report-area" aria-live="polite">
+        <div id="empty-state" class="empty-state">
+          <div class="radar"><span></span></div>
+          <h2>분석 결과를 불러오는 중입니다</h2>
+        </div>
+
+        <div id="report" class="report hidden">
+          <div class="report-head">
+            <div>
+              <p class="overline">ANALYSIS REPORT <span id="analysis-id"></span></p>
+              <h2><span id="package-name">—</span><small id="package-version"></small></h2>
+              <div id="category-chips" class="chips"></div>
+            </div>
+            <div id="verdict" class="verdict danger">
+              <small>MISMATCH SCORE</small>
+              <strong id="score">0</strong><span id="threshold">/ 6</span>
+              <b id="decision">REVIEW REQUIRED</b>
+            </div>
+          </div>
+
+          <div class="metric-row">
+            <article><small>EXPECTED</small><strong id="expected-count">0</strong><span>정책 승인 행위</span></article>
+            <article><small>OBSERVED</small><strong id="observed-count">0</strong><span>계측 이벤트</span></article>
+            <article><small>UNEXPLAINED</small><strong id="unmatched-count">0</strong><span>불일치 행위</span></article>
+            <article><small>CHAIN BONUS</small><strong id="chain-bonus">+0</strong><span>공격 연쇄 가중치</span></article>
+          </div>
+
+          <div class="comparison">
+            <article class="data-card expected-card">
+              <header><span>EXPECTED BEHAVIOR</span><small>AI 추출 → 고정 정책 검증</small></header>
+              <div id="expected-list" class="event-list"></div>
+            </article>
+            <article class="data-card observed-card">
+              <header><span>OBSERVED BEHAVIOR</span><small>가상 환경 계측 결과</small></header>
+              <div id="observed-list" class="event-list"></div>
+            </article>
+          </div>
+
+          <article class="timeline-card">
+            <header>
+              <div><span>EXECUTION TIMELINE</span><small id="runner-label">SAFE REPLAY</small></div>
+              <div class="legend"><i class="ok"></i>일치 <i class="bad"></i>불일치 <i class="attempt"></i>차단된 시도</div>
+            </header>
+            <div id="timeline" class="timeline"></div>
+          </article>
+
+          <article id="injection-card" class="injection-card hidden">
+            <span>↯</span>
+            <div><strong>문서 기반 프롬프트 인젝션 신호 감지</strong><p id="injection-text"></p></div>
+            <b>UNTRUSTED DATA</b>
+          </article>
+
+          <footer class="report-note">
+            <span>!</span>
+            <p><strong>해석 주의</strong> 관측되지 않은 행위는 안전을 의미하지 않습니다. 이 결과는 제한된 환경과 시간 안에서 설명되지 않는 행위를 보여주는 검토 근거입니다.</p>
+          </footer>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status"></div>
+</body>
+</html>
+

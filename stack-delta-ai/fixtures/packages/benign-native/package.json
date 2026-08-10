@@ -1,0 +1,10 @@
+{
+  "name": "demo-benign-native",
+  "version": "1.0.0",
+  "description": "Safe native-addon shaped fixture for STACK-Delta",
+  "gypfile": true,
+  "scripts": {
+    "install": "node install.js"
+  }
+}
+

@@ -1,0 +1,9 @@
+{
+  "name": "demo-suspicious-canary",
+  "version": "1.0.0",
+  "description": "Safe attack simulation that touches canaries only",
+  "scripts": {
+    "postinstall": "node install.js"
+  }
+}
+
